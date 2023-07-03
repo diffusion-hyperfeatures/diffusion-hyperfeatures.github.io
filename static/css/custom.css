@@ -10,3 +10,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity (last value) as desired */
 }
+
+.approach-figure {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
+}

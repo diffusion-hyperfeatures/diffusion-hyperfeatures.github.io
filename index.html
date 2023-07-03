@@ -50,17 +50,17 @@
           <h1 class="title is-2 publication-title has-text-white">Diffusion Hyperfeatures: <br> <span class="is-size-4">Searching Through Time and Space for Semantic Correspondence</span></h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://people.eecs.berkeley.edu/~graceluo">Grace Luo</a><sup>1</sup>,</span>
+              <a href="https://people.eecs.berkeley.edu/~graceluo" target="_blank">Grace Luo</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://www.lisabdunlap.com">Lisa Dunlap</a><sup>1</sup>,</span>
+              <a href="https://www.lisabdunlap.com" target="_blank">Lisa Dunlap</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=_kJ-zUYAAAAJ&hl=en">Dong Huk Park</a><sup>1*</sup>,
+              <a href="https://scholar.google.com/citations?user=_kJ-zUYAAAAJ&hl=en" target="_blank">Dong Huk Park</a><sup>1*</sup>,
             </span>
             <span class="author-block">
-              <a href="https://holynski.org">Aleksander Holynski</a><sup>1, 2*</sup>,
+              <a href="https://holynski.org" target="_blank">Aleksander Holynski</a><sup>1, 2*</sup>,
             </span>
             <span class="author-block">
-              <a href="http://people.eecs.berkeley.edu/~trevor">Trevor Darrell</a><sup>1*</sup>
+              <a href="http://people.eecs.berkeley.edu/~trevor" target="_blank">Trevor Darrell</a><sup>1*</sup>
             </span>
           </div>
 
@@ -74,8 +74,7 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2305.14334"
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href="https://arxiv.org/abs/2305.14334" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
@@ -84,12 +83,11 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/diffusion-hyperfeatures/diffusion_hyperfeatures" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Coming Soon)</span>
+                  <span>Code <span class="has-text-success">(New!)</span></span>
                   </a>
               </span>
             </div>
@@ -105,7 +103,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-4">Abstract</h2>
         <div class="content has-text-justified">
           <p>
             Diffusion models have been shown to be capable of generating high-quality images, 
@@ -135,7 +133,7 @@
     <!-- A -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Diffusion Hyperfeatures</h2>
+        <h2 class="title is-4">Diffusion Hyperfeatures</h2>
         <div class="content has-text-justified">
           <p>
             We extract feature maps varying across timesteps and layers from the diffusion process and
@@ -146,9 +144,9 @@
             neighbors over their Diffusion Hyperfeatures.
           </p>
         </div>
-        <figure class="image">
-	  	  <img src="./assets/approach.png">
-	  	</figure>
+        <figure class="image approach-figure">
+	  	    <img src="./assets/approach.png">
+	  	  </figure>
       </div>
     </div>
     <!--/ A -->
@@ -156,10 +154,10 @@
     <!-- B -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Semantic Keypoint Matching on Real Images</h2>
+        <h2 class="title is-4">Semantic Keypoint Matching</h2>
         <div class="content has-text-justified">
           <p>
-          	We distill Diffusion Hyperfeatures for semantic correspondence by tuning our aggregation network on real images from SPair-71k. The dataset is comprised of image pairs with annotated common semantic keypoints for a variety of object categories spanning vehicles, animals, and household objects.
+          	<b>Tuning on Real Images.</b> We distill Diffusion Hyperfeatures for semantic correspondence by tuning our aggregation network on real images from SPair-71k. The dataset is comprised of image pairs with annotated common semantic keypoints for a variety of object categories spanning vehicles, animals, and household objects.
           </p>
         </div>
         <div class="columns">
@@ -176,10 +174,10 @@
     <!-- C -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Transfer to Synthetic Images</h2>
+        <!-- <h2 class="title is-3">Transfer to Synthetic Images</h2> -->
         <div class="content has-text-justified">
           <p>
-           	We can take this same aggregation network tuned on these real images representing a limited set of object categories and apply it to synthetic images containing completely unseen and out-of-domain objects.
+           	<b>Transfer to Synthetic Images.</b> We can take this same aggregation network tuned on these real images representing a limited set of object categories and apply it to synthetic images containing completely unseen and out-of-domain objects.
           </p>
         </div>
       
@@ -194,6 +192,49 @@
       </div>
     </div>
     <!--/ C -->
+    <!-- D -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Dense Warping</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our aggregation network, which was trained on the semantic keypoint matching task, can also be used for dense warping. We follow the visualization format from <a href="https://sd-complements-dino.github.io" target="_blank">Zhang et. al. (arXiv 2023)</a>. Here, we show examples of warps on both real and synthetic images for cat, dog, and bird (where the synthetic images where synthesized from the prompt "Full body photo of {category}."). When warping we compute nearest neighbors matches for all pixels within an object mask, with no visual postprocessing.
+          </p>
+        </div>
+        <div class="columns">
+          <figure class="image column">
+            <img src="./assets/real_warp_1.png">
+          </figure>
+          <figure class="image column">
+            <img src="./assets/real_warp_2.png">
+          </figure>
+        </div>
+        <div class="columns">
+          <figure class="image column">
+            <img src="./assets/synthetic_warp_1.png">
+          </figure>
+          <figure class="image column">
+            <img src="./assets/synthetic_warp_2.png">
+          </figure>
+        </div>
+      </div>
+    </div>
+    <!--/ D -->
+    <!-- F -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Concurrent Work</h2>
+        <div class="content has-text-justified">
+          We would also like to acknowledge the following concurrent works, which use raw diffusion features for the task of semantic correspondence:
+          <ul>
+            <li><a href="https://sd-complements-dino.github.io" target="_blank">A Tale of Two Features: Stable Diffusion Complements DINO for Zero-Shot Semantic Correspondence</a></li>
+            <li><a href="https://diffusionfeatures.github.io" target="_blank">Emergent Correspondence from Image Diffusion</a></li>
+            <li><a href="https://arxiv.org/abs/2305.15581" target="_blank"> Unsupervised Semantic Correspondence Using Stable Diffusion</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/ F -->
   </div>
 </section>
 
